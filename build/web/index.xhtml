@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panelGrid columns="2">
+                <p:panel>
+                    <p:dataTable var="veh" value="#{vehiculoController.vehiculos}" style="text-align: center;">
+                        <p:column headerText="Placa">
+                            #{veh.placa}
+                        </p:column>
+                        <p:column headerText="Marca">    
+                            #{veh.marca}
+                        </p:column>
+                        <p:column headerText="Accesorio">
+                            <h:commandButton image="/Imagenes/#{veh.cSonido()}" style="width: 50px;height: 50px;"/>
+                            <h:commandButton image="/Imagenes/#{veh.cAirbag()}" style="width: 50px;height: 50px;"/>
+                            <h:commandButton image="/Imagenes/#{veh.cRines()}" style="width: 50px;height: 50px;"/>
+                            <h:commandButton image="/Imagenes/#{veh.cvidrios()}" style="width: 50px;height: 50px;"/>
+                            
+                            
+                        </p:column>
+                        <p:column headerText="Seleccionar">
+                            <h:commandButton value="+" action="#{vehiculoController.seleccionar(veh)}"></h:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+                <p:panelGrid columns="1">
+                    <p:panel header="Información del Vehiculo">
+                        <p:panelGrid columns="2">
+                            Placa:#{vehiculoController.vehiculo.placa}
+                            Marca:#{vehiculoController.vehiculo.marca}
+                            Modelo:#{vehiculoController.vehiculo.modelo}
+                            Color:#{vehiculoController.vehiculo.color}
+                        </p:panelGrid>
+                    </p:panel>
+                    <p:panel header="Accesorios">
+                        <p:panelGrid columns="2">
+                            <h:commandButton value="S" action="#{vehiculoController.tieneSonido()}"></h:commandButton>
+                            <h:commandButton value="A" action="#{vehiculoController.tieneAirbag()}"></h:commandButton>
+                            <h:commandButton value="R" action="#{vehiculoController.tieneRines()}"></h:commandButton>
+                            <h:commandButton value="V" action="#{vehiculoController.tieneVidrios()}"></h:commandButton>
+                        </p:panelGrid>
+                    </p:panel>
+                </p:panelGrid>
+            </p:panelGrid> 
+        </h:form>
+    </h:body>
+
+</html>
+
